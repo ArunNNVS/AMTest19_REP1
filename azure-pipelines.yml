@@ -17,4 +17,8 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
     echo "HI This is my first sample Azure piepline"
+    
   displayName: 'Run a multi-line script'
+  
+  command:
+     /bin/sh sample.sh
