@@ -18,4 +18,4 @@ steps:
     echo See https://aka.ms/yaml
     echo "HI This is my first sample Azure piepline"
     echo "This is the second Test i am doing" 
-- bash:sample.sh
+
