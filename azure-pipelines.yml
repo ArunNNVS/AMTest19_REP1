@@ -10,7 +10,7 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- script: echo Hello, Sankar!
+- script: echo Hello, Arun!
   displayName: 'Run a one-line script'
 
 - script: 
