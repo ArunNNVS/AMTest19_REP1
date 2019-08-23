@@ -26,7 +26,7 @@ steps:
       $root = 'https://api.p12.hmgroup.com:8201/api/payments/healthcheck'
       $user = "NnlCZThqSkxOcWhNVkFIKjRRbWtheWNzckhiUXFoTUxN"
       $pass= "Wng3VnVoVHMqNXlUNW1hbGxyaWdodFZCcm1NUEhyQndw"
-      $Pair=  "$($username):$($password)"
+      $Pair=  "$($user):$($pass)"
       $headers = @{ Authorization = "Basic $Pair" }
       $result = Invoke-WebRequest -Uri $root -Method Get -Headers $headers
       
