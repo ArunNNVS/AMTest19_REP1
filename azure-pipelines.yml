@@ -24,11 +24,16 @@ steps:
     targetType: 'inline'
     script: |
       $root = 'https://api.p12.hmgroup.com:8201/api/payments/healthcheck'
+      $root1 = 'https://api.p12.hmgroup.com:8201/api/promotion/validatecoupon/'
       $user = "NnlCZThqSkxOcWhNVkFIKjRRbWtheWNzckhiUXFoTUxN"
       $pass= "Wng3VnVoVHMqNXlUNW1hbGxyaWdodFZCcm1NUEhyQndw"
       $Pair=  "$($user):$($pass)"
       $encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Pair))
       $headers = @{ Authorization = "Basic $encodedCredentials" }
-      $result = Invoke-WebRequest -Uri $root -Method Get -Headers $headers
-      
+      $resulthealth = Invoke-WebRequest -Uri $root -Method Get -Headers $headers
+
+      $coupon = {"CouponCode":"CouponTest1","UserEmail":"sample","CustomerExternalId":"277f7023881e4e4ead3865deb978bb0b","Market":"SWE"}
+      $json = $coupon
+      $resultjson = Invoke-WebRequest -Uri $root1 -Method POST -Headers $headers -Body $json -ContentType 'application/json'
+
     failOnStderr: true
