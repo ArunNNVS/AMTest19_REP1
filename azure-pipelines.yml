@@ -27,8 +27,7 @@ steps:
       $user = "NnlCZThqSkxOcWhNVkFIKjRRbWtheWNzckhiUXFoTUxN"
       $pass= "Wng3VnVoVHMqNXlUNW1hbGxyaWdodFZCcm1NUEhyQndw"
       $Pair=  "$($username):$($password)"
-      $encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Pair))
-      $headers = @{ Authorization = "Basic $encodedCredentials" }
+      $headers = @{ Authorization = "Basic $Pair" }
       $result = Invoke-WebRequest -Uri $root -Method Get -Headers $headers
       
     failOnStderr: true
