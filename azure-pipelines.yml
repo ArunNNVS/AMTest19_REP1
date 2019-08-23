@@ -26,7 +26,7 @@ steps:
       $root = 'https://api.p12.hmgroup.com:8201/api/payments/healthcheck'
       $user = "NnlCZThqSkxOcWhNVkFIKjRRbWtheWNzckhiUXFoTUxN"
       $pass= "Wng3VnVoVHMqNXlUNW1hbGxyaWdodFZCcm1NUEhyQndw"
-      $credential = New-Object System.Management.Automation.PSCredential($user, $pass)
+      $credential = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($user, $pass)
       
       $result = Invoke-RestMethod $root -Credential $credential
     failOnStderr: true
