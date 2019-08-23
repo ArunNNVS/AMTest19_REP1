@@ -32,8 +32,8 @@ steps:
       $headers = @{ Authorization = "Basic $encodedCredentials" }
       $resulthealth = Invoke-WebRequest -Uri $root -Method Get -Headers $headers
 
-      $coupon = @{'CouponCode' : 'CouponTest1','UserEmail'='sample','CustomerExternalId'='277f7023881e4e4ead3865deb978bb0b','Market'='SWE'}
-      $json = $coupon
+      $coupon = '{"CouponCode":"CouponTest1","UserEmail":"admin","CustomerExternalId":"277f7023881e4e4ead3865deb978bb0b","Market":"SWE"}'
+      $json = ConvertFrom-Json –InputObject $coupon
       $resultjson = Invoke-WebRequest -Uri $root1 -Method POST -Headers $headers -Body $json -ContentType 'application/json'
 
     failOnStderr: true
