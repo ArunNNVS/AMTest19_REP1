@@ -19,3 +19,14 @@ steps:
     echo "HI This is my first sample Azure piepline"
     echo "This is the second Test i am doing" 
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $root = 'https://api.p12.hmgroup.com:8201/api/payments/healthcheck'
+      $user = "NnlCZThqSkxOcWhNVkFIKjRRbWtheWNzckhiUXFoTUxN"
+      $pass= "Wng3VnVoVHMqNXlUNW1hbGxyaWdodFZCcm1NUEhyQndw"
+      $credential = New-Object System.Management.Automation.PSCredential($user, $pass)
+      
+      $result = Invoke-RestMethod $root -Credential $credential
+    failOnStderr: true
