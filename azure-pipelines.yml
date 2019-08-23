@@ -26,7 +26,8 @@ steps:
       $root = 'https://api.p12.hmgroup.com:8201/api/payments/healthcheck'
       $user = "NnlCZThqSkxOcWhNVkFIKjRRbWtheWNzckhiUXFoTUxN"
       $pass= "Wng3VnVoVHMqNXlUNW1hbGxyaWdodFZCcm1NUEhyQndw"
-      $credential = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($user, $pass))
+      $encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Pair))
+      $headers = @{ Authorization = "Basic $encodedCredentials" }
+      $result = Invoke-WebRequest -Uri $url -Method Get -Headers $headers
       
-      $result = Invoke-RestMethod $root -Credential $credential
     failOnStderr: true
